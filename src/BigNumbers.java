@@ -83,4 +83,46 @@ public class BigNumbers {
         return newResult;
     }
 
+    public static int[] multiply(int[] num1, int digit) {
+        int[] result = new int[num1.length + 1];
+        int over = 0;
+        for (int i = num1.length - 1; i >= 0; i--) {
+            int multiplication = num1[i] * digit + over;
+            result[i + 1] = multiplication % 10;
+            over = multiplication / 10;
+        }
+        result[0] = over;
+        if (result[0] == 0) {
+            int[] newResult = new int[num1.length];
+            for (int i = 0; i < result.length; i++) {
+                newResult[i] = result[i + 1];
+            }
+            return newResult;
+        }
+        return result;
+    }
+
+    public static int[] divide(int[] num1, int digit) {
+        int[] result = new int[num1.length];
+        int over = 0;
+        for (int i = 0; i < num1.length; i++) {
+            int num = over * 10 + num1[i];
+            result[i] = num / digit;
+            over = num % digit;
+        }
+        int index = 0;
+        while (index < num1.length && result[index] == 0) {
+            index++;
+        }
+        int newlen = num1.length - index;
+        if (newlen == 0){
+            return new int[]{0};
+        }
+        int[] newResult = new int[newlen];
+        for (int i = 0; i < newlen; i++) {
+            newResult[i] = result[index + i];
+        }
+        return newResult;
+    }
+
 }
