@@ -17,7 +17,7 @@ public class Grades {
         for (int grade : grades) {
             sum += grade;
         }
-        return (double) sum / grades.length;
+        return Math.round((double) sum / grades.length * 100.0) / 100.0;
     }
 
     public static int[] round(int[] grades) {
