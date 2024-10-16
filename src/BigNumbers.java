@@ -101,9 +101,6 @@ public class BigNumbers {
             index++;
         }
         int newlen = num1.length - index;
-        if (newlen == 0){
-            return new int[]{0};
-        }
         int[] newResult = new int[newlen];
         for (int i = 0; i < newlen; i++) {
             newResult[i] = result[index + i];
