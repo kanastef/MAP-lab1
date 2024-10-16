@@ -1,15 +1,17 @@
+import java.util.ArrayList;
 public class Grades {
 
     public static int[] failingGrades(int[] grades) {
-        int[] failingGrades = new int[grades.length];
-        int count = 0;
+        ArrayList<Integer> failingGrades = new ArrayList<>();
         for (int i = 0; i < grades.length; i++) {
-            if (grades[i] < 40) {
-                failingGrades[count] = grades[i];
-                count++;
-            }
+            if (grades[i] < 40)
+                failingGrades.add(grades[i]);
         }
-        return failingGrades;
+        int[] newFailingGrades = new int[failingGrades.size()];
+        for (int i = 0; i < failingGrades.size(); i++) {
+            newFailingGrades[i] = failingGrades.get(i);
+        }
+        return newFailingGrades;
     }
 
     public static double average(int[] grades) {
